@@ -1,0 +1,69 @@
+# Core Dependencies
+fastapi==0.109.2
+uvicorn==0.27.1
+python-dotenv==1.0.1
+pydantic==2.6.1
+python-multipart==0.0.9
+aiofiles==23.2.1
+starlette==0.36.3
+
+# GitHub Integration
+PyGithub==2.1.1
+requests==2.31.0
+
+# AI and ML
+transformers==4.37.2
+torch==2.2.0
+torchvision==0.17.0
+google-generativeai==0.3.2
+spacy==3.7.2
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+
+# Code Analysis
+networkx==3.2.1
+matplotlib==3.8.2
+
+# Documentation
+reportlab==4.1.0
+Pillow==10.2.0
+
+# Security
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.1.2
+
+# Rate Limiting
+slowapi==0.1.8
+limits==5.2.0
+
+# Testing
+pytest==8.0.0
+pytest-asyncio==0.23.5
+httpx==0.26.0
+
+# AI Dependencies
+langchain==0.1.0
+langchain-google-genai==0.0.6
+sentence-transformers==2.2.2
+scikit-learn==1.4.0
+numpy==1.26.4
+
+# NLP Dependencies
+nltk==3.8.1
+
+# Code Analysis
+tree-sitter==0.20.4
+pygments==2.17.2
+astroid==3.0.2
+radon==6.0.1
+
+# Documentation Generation
+pydoc-markdown==4.8.2
+mkdocs==1.5.3
+mkdocs-material==9.5.3
+
+# Code Execution
+black==23.12.1
+
+# WebSocket support
+websockets==12.0.0 
