@@ -1,228 +1,230 @@
-# DevSensei 🧙‍♂️
+# DevSensei Frontend 🧙‍♂️
 
-An AI-powered code understanding and generation platform that combines the power of Google Gemini AI, RAG (Retrieval Augmented Generation), and NLP to help developers work more efficiently.
+A modern, responsive frontend for the DevSensei AI-powered code understanding and generation platform.
 
-![DevSensei](https://img.shields.io/badge/DevSensei-AI%20Code%20Assistant-purple)
-![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![DevSensei](https://img.shields.io/badge/DevSensei-Frontend-purple)
 ![React](https://img.shields.io/badge/React-18.2+-61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2+-3178C6)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.3+-38B2AC)
 
 ## 🚀 Features
 
-### 1. Repository Explorer 📁
-- **GitHub Integration**: Input any GitHub username and browse their repositories
-- **Smart Documentation**: Generate comprehensive PDF documentation including:
-  - Setup instructions
-  - Architecture overview
-  - Codebase map visualization
-  - API documentation
-- **Chat with Code**: Ask questions about the codebase using RAG-powered chat
-- **Visual Codebase Map**: See the structure and relationships in your code
+### 🏠 Home Page
+- Beautiful hero section with gradient backgrounds
+- Feature showcase with interactive cards
+- Responsive design with smooth animations
+- Call-to-action sections
 
-### 2. Code Playground 💻
-- **Multi-Language Support**: Python, JavaScript, TypeScript, Java, C++, Go, Rust, and more
-- **Real-time Execution**: Run code directly in the browser
-- **AI-Powered Features**:
-  - **Generate**: Create code from natural language descriptions
-  - **Explain**: Get detailed explanations of code functionality
-  - **Debug**: Identify and fix bugs automatically
-  - **Optimize**: Improve code performance and readability
-- **Syntax Highlighting**: Beautiful code editor with Monaco Editor
+### 📁 Repository Explorer
+- GitHub username search and repository browsing
+- Repository selection with detailed information
+- PDF documentation generation
+- AI-powered codebase chat functionality
+- Visual repository statistics
 
-### 3. Frontend AI Playground 🎨
-- **Framework Support**: Vanilla JS, React, Vue, Angular
-- **Live Preview**: See your generated frontend code in action instantly
-- **AI Generation**: Describe what you want to build, and AI creates it
-- **Example Projects**:
-  - Games (Flappy Bird, Memory Cards)
-  - Applications (Todo Lists, Calculators)
-  - Landing Pages
-  - Interactive Dashboards
+### 💻 Code Playground
+- Multi-language code editor with Monaco Editor
+- Real-time code execution
+- AI-powered features:
+  - **Generate**: Create code from descriptions
+  - **Execute**: Run code with input/output
+  - **Explain**: Get detailed code explanations
+  - **Debug**: Identify and fix bugs
+  - **Optimize**: Improve code performance
+- Syntax highlighting and error detection
+- Copy and download functionality
+
+### 🎨 Frontend AI Playground
+- Framework selection (Vanilla JS, React, Vue, Angular)
+- AI-powered UI generation
+- Live preview with responsive testing
+- Code editor for HTML, CSS, and JavaScript
+- Download generated projects
+- Mobile/tablet/desktop preview modes
+
+### 📚 Documentation
+- Comprehensive feature documentation
+- Getting started guides
+- API reference
+- Support resources
 
 ## 🛠️ Technology Stack
 
-### Backend
-- **FastAPI**: Modern, fast web framework for building APIs
-- **Google Gemini AI**: Advanced language model for code generation and understanding
-- **ChromaDB**: Vector database for RAG implementation
-- **Langchain**: Framework for building applications with LLMs
-- **spaCy & NLTK**: Natural Language Processing
-- **Docker**: Optional containerization for code execution
-- **NetworkX & Matplotlib**: Codebase visualization
-
-### Frontend
-- **React 18**: UI library
-- **TypeScript**: Type-safe JavaScript
-- **Tailwind CSS**: Utility-first CSS framework
-- **Framer Motion**: Animation library
-- **Monaco Editor**: VS Code's editor in the browser
-- **Axios**: HTTP client
+- **React 18** - Modern React with hooks and concurrent features
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Smooth animations and transitions
+- **Monaco Editor** - VS Code editor in the browser
+- **React Query** - Data fetching and caching
+- **React Router** - Client-side routing
+- **Axios** - HTTP client for API calls
+- **Lucide React** - Beautiful icons
+- **React Hot Toast** - Toast notifications
 
 ## 📋 Prerequisites
 
-- Python 3.8 or higher
 - Node.js 16 or higher
-- Git
-- Docker (optional, for sandboxed code execution)
+- npm or yarn package manager
 
 ## 🔧 Installation
 
-### 1. Clone the Repository
+1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/DevSensei.git
-cd DevSensei
+cd DevSensei/frontend
 ```
 
-### 2. Backend Setup
-
+2. **Install dependencies**
 ```bash
-cd backend
-
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run NLP setup script
-python setup_nlp.py
-```
-
-### 3. Frontend Setup
-
-```bash
-cd ../frontend
-
-# Install dependencies
 npm install
+# or
+yarn install
 ```
 
-### 4. Environment Configuration
-
-Create `.env` files in both backend and frontend directories:
-
-**Backend `.env**:**
-```env
-# Google Gemini API Key
-GEMINI_API_KEY=your_gemini_api_key_here
-
-# GitHub Personal Access Token
-GITHUB_TOKEN=your_github_token_here
-
-# Server Configuration
-HOST=0.0.0.0
-PORT=8000
-CORS_ORIGINS=http://localhost:5173,http://localhost:3000
-
-# Vector Database
-VECTOR_DB_PATH=./vector_db
-EMBEDDING_MODEL=models/embedding-001
-
-# NLP Configuration
-ENABLE_NLP=True
-NLP_MODEL=en_core_web_sm
+3. **Environment setup**
+```bash
+cp .env.example .env
 ```
 
-**Frontend `.env**:**
+Edit `.env` file:
 ```env
 VITE_API_BASE_URL=http://localhost:8000
 VITE_APP_TITLE=DevSensei
 ```
 
-## 🚀 Running the Application
-
-### Start Backend Server
+4. **Start development server**
 ```bash
-cd backend
-uvicorn main:app --reload
-```
-The API will be available at `http://localhost:8000`
-API documentation: `http://localhost:8000/docs`
-
-### Start Frontend Development Server
-```bash
-cd frontend
 npm run dev
+# or
+yarn dev
 ```
-The frontend will be available at `http://localhost:5173`
 
-## 📖 Usage Guide
+The application will be available at `http://localhost:5173`
 
-### Repository Explorer
-1. Navigate to Repository Explorer
-2. Enter a GitHub username
-3. Select a repository from the list
-4. Options:
-   - **Generate PDF**: Creates comprehensive documentation
-   - **Chat with Repo**: Ask questions about the code
-   - **View Codebase Map**: Visualize the repository structure
-
-### Code Playground
-1. Navigate to Code Playground
-2. Select your programming language
-3. Options:
-   - **Generate**: Describe what you want to build
-   - **Run**: Execute your code with optional input
-   - **Explain**: Get detailed code explanation
-   - **Debug**: Fix errors automatically
-   - **Optimize**: Improve code quality
-
-### Frontend AI Playground
-1. Navigate to Frontend AI
-2. Describe your frontend project
-3. Select framework (Vanilla JS recommended for live preview)
-4. Generate code and see live preview
-
-## 🔑 API Keys
-
-### Google Gemini API Key
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create a new API key
-3. Add to backend `.env` file
-
-### GitHub Personal Access Token
-1. Go to [GitHub Settings > Tokens](https://github.com/settings/tokens)
-2. Generate new token with `repo` scope
-3. Add to backend `.env` file
-
-## 🏗️ Architecture
+## 🏗️ Project Structure
 
 ```
-DevSensei/
-├── backend/
-│   ├── core/
-│   │   ├── rag_engine.py      # RAG implementation
-│   │   ├── nlp_processor.py   # NLP analysis
-│   │   └── code_executor.py   # Code execution engine
-│   ├── routers/
-│   │   ├── github_scraper.py  # GitHub integration
-│   │   ├── ai_chat.py         # AI chat endpoints
-│   │   ├── documentation.py   # Doc generation
-│   │   └── code_execution.py  # Code execution endpoints
-│   └── main.py                # FastAPI application
-├── frontend/
-│   ├── src/
-│   │   ├── pages/             # React pages
-│   │   ├── services/          # API services
-│   │   └── App.tsx           # Main application
-│   └── package.json
-└── README.md
+src/
+├── components/          # Reusable components
+│   ├── layout/         # Layout components (Navbar, Footer)
+│   └── CodeEditor.tsx  # Monaco code editor wrapper
+├── pages/              # Page components
+│   ├── Home.tsx        # Landing page
+│   ├── RepositoryExplorer.tsx
+│   ├── CodePlayground.tsx
+│   ├── FrontendPlayground.tsx
+│   └── Documentation.tsx
+├── services/           # API services
+│   └── api.ts          # API client and service functions
+├── utils/              # Utility functions
+│   └── cn.ts           # Class name utility
+├── App.tsx             # Main app component
+├── main.tsx            # App entry point
+└── index.css           # Global styles
+```
+
+## 🎨 Design System
+
+### Colors
+- **Primary**: Blue gradient (`#0ea5e9` to `#0284c7`)
+- **Secondary**: Slate grays (`#1e293b` to `#f8fafc`)
+- **Accent**: Purple gradient (`#d946ef` to `#c026d3`)
+
+### Typography
+- **Font Family**: Inter (sans-serif), JetBrains Mono (monospace)
+- **Scale**: Responsive typography with proper line heights
+
+### Components
+- **Buttons**: Primary, secondary, accent, and outline variants
+- **Cards**: Glass morphism effect with subtle borders
+- **Inputs**: Consistent styling with focus states
+- **Code Blocks**: Dark theme with syntax highlighting
+
+## 🔌 API Integration
+
+The frontend communicates with the DevSensei backend through a REST API:
+
+- **Base URL**: `http://localhost:8000`
+- **Services**: GitHub, Code Execution, AI Chat, Frontend Generation
+- **Authentication**: API key-based (optional)
+- **Error Handling**: Automatic retry and user-friendly error messages
+
+## 📱 Responsive Design
+
+- **Mobile First**: Designed for mobile devices first
+- **Breakpoints**: 
+  - `sm`: 640px
+  - `md`: 768px
+  - `lg`: 1024px
+  - `xl`: 1280px
+- **Components**: All components are fully responsive
+- **Navigation**: Collapsible mobile menu
+
+## ⚡ Performance
+
+- **Code Splitting**: Automatic route-based code splitting
+- **Lazy Loading**: Components loaded on demand
+- **Caching**: React Query for efficient data caching
+- **Optimizations**: Vite build optimizations
+
+## 🧪 Development
+
+### Available Scripts
+
+```bash
+# Development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+### Code Style
+
+- **ESLint**: Configured for React and TypeScript
+- **Prettier**: Code formatting (recommended)
+- **TypeScript**: Strict mode enabled
+- **Conventions**: 
+  - PascalCase for components
+  - camelCase for functions and variables
+  - kebab-case for file names
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+### Deploy to Netlify
+
+1. Connect your GitHub repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `dist`
+4. Add environment variables in Netlify dashboard
+
+### Deploy to Vercel
+
+```bash
+npm install -g vercel
+vercel
 ```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## 📝 License
@@ -231,14 +233,12 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- Google Gemini AI for powerful language models
-- The open-source community for amazing tools and libraries
-- All contributors and users of DevSensei
-
-## 📞 Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers.
+- **React Team** for the amazing framework
+- **Tailwind CSS** for the utility-first approach
+- **Monaco Editor** for the VS Code experience
+- **Framer Motion** for smooth animations
+- **Lucide** for beautiful icons
 
 ---
 
-Built with ❤️ by the DevSensei Team 
+Built with ❤️ by the DevSensei Team
