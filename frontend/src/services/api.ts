@@ -199,8 +199,8 @@ export const documentationApi = {
   },
 
   // Chat with repository
-  chatWithRepo: async (repo_name: string, query: string) => {
-    const response = await api.post('/api/documentation/chat-with-repo', { repo_name, query });
+  chatWithRepo: async (owner: string, repo_name: string, question: string) => {
+    const response = await api.post('/api/interact-repo/chat', { owner, repo_name, question });
     return response.data;
   },
 };

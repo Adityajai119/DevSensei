@@ -1,1 +1,32 @@
-backend/.env 
+# Backend
+backend/.env
+backend/venv/
+backend/app/__pycache__/
+backend/app/api/__pycache__/
+backend/app/services/__pycache__/
+backend/vector_db/*.sqlite3
+*.pyc
+
+# Frontend
+frontend/.env
+frontend/node_modules/
+frontend/dist/
+frontend/.next/
+
+# General
+__pycache__/
+.DS_Store
+*.log
+*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.bak
+*.tmp
+*.local
+.idea/
+.vscode/
+.env
+.env.* 

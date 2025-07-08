@@ -102,19 +102,33 @@ class GeminiService:
 
     async def generate_frontend(self, prompt: str, framework: str) -> str:
         try:
-            full_prompt = f"""
-            Generate a complete, production-ready {framework} frontend codebase based on the following prompt:
-            
-            Prompt: {prompt}
-            
-            Requirements:
-            1. Output only the full code (HTML, CSS, JS, etc.) needed to run the app.
-            2. Do NOT include any placeholder text, explanations, or comments unless specifically requested.
-            3. Do NOT include any mock HTML or 'Your content will appear here.'
-            4. The code should be ready to copy and run as a real project.
-            
-            Please provide only the code without any markdown formatting or extra text.
-            """
+            # If the framework is React, instruct to generate only App.jsx (or App.js) as a single file
+            if framework.lower() == "react":
+                full_prompt = f"""
+                Generate only the code for a React frontend app in a single file (App.jsx), using functional components and hooks, based on the following prompt:
+                
+                Prompt: {prompt}
+                
+                Requirements:
+                1. Output only the code for App.jsx. Do NOT include CSS, HTML, or any other files.
+                2. Do NOT include any explanations, comments, or extra text.
+                3. The code should be ready to copy and run as a real React component file.
+                4. Do NOT use markdown formatting or language tags.
+                """
+            else:
+                full_prompt = f"""
+                Generate a complete, production-ready {framework} frontend codebase based on the following prompt:
+                
+                Prompt: {prompt}
+                
+                Requirements:
+                1. Output only the full code (HTML, CSS, JS, etc.) needed to run the app.
+                2. Do NOT include any placeholder text, explanations, or comments unless specifically requested.
+                3. Do NOT include any mock HTML or 'Your content will appear here.'
+                4. The code should be ready to copy and run as a real project.
+                
+                Please provide only the code without any markdown formatting or extra text.
+                """
             response = self.model.generate_content(full_prompt)
             return response.text
         except Exception as e:

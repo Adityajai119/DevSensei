@@ -435,6 +435,11 @@ async def generate_frontend(request: FrontendGenerationRequest):
     try:
         # Use real Gemini service to generate frontend code
         code = await gemini_service.generate_frontend(request.prompt, request.framework)
+
+        # Remove all markdown code block markers (```...)
+        lines = code.splitlines()
+        filtered_lines = [line for line in lines if not line.strip().startswith("```")]
+        code = "\n".join(filtered_lines).strip()
         
         return {
             "code": code,

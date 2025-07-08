@@ -82,32 +82,7 @@ async def get_repo_info(request: RepoRequest):
 async def get_repo_files(request: RepoRequest):
     """Get repository files and index for RAG"""
     try:
-        # Mock repository files - replace with actual GitHub API integration
-        files = [
-            FileContent(
-                path="main.py",
-                content="def main():\n    print('Hello World')",
-                size=50,
-                language="python"
-            ),
-            FileContent(
-                path="README.md",
-                content="# Sample Repository\n\nThis is a sample repository.",
-                size=100,
-                language="markdown"
-            ),
-            FileContent(
-                path="requirements.txt",
-                content="fastapi\nuvicorn\nrequests",
-                size=30,
-                language="text"
-            )
-        ]
-        
-        if request.index_for_rag:
-            # Here you would implement actual RAG indexing
-            pass
-            
+        files = await github_service.get_repository_files(request.owner, request.repo, request.branch or "main")
         return files
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -116,30 +91,7 @@ async def get_repo_files(request: RepoRequest):
 async def get_repo_structure(request: RepoRequest):
     """Get repository structure"""
     try:
-        # Mock repository structure - replace with actual GitHub API integration
-        structure = {
-            "root": {
-                "type": "directory",
-                "children": {
-                    "src": {
-                        "type": "directory",
-                        "children": {
-                            "main.py": {"type": "file", "size": 1024},
-                            "utils.py": {"type": "file", "size": 512}
-                        }
-                    },
-                    "tests": {
-                        "type": "directory",
-                        "children": {
-                            "test_main.py": {"type": "file", "size": 768}
-                        }
-                    },
-                    "README.md": {"type": "file", "size": 2048},
-                    "requirements.txt": {"type": "file", "size": 256}
-                }
-            }
-        }
-        
+        structure = await github_service.get_repository_structure(request.owner, request.repo)
         return structure
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -181,40 +133,7 @@ async def search_code_in_repo(request: dict):
 async def get_user_repos(username: str = Query(...)):
     """Get user repositories"""
     try:
-        # Mock user repositories - replace with actual GitHub API integration
-        repos = [
-            {
-                "name": "sample-repo-1",
-                "full_name": f"{username}/sample-repo-1",
-                "description": "First sample repository",
-                "language": "Python",
-                "stars": 50,
-                "forks": 10,
-                "default_branch": "main",
-                "url": f"https://github.com/{username}/sample-repo-1"
-            },
-            {
-                "name": "sample-repo-2",
-                "full_name": f"{username}/sample-repo-2",
-                "description": "Second sample repository",
-                "language": "JavaScript",
-                "stars": 25,
-                "forks": 5,
-                "default_branch": "main",
-                "url": f"https://github.com/{username}/sample-repo-2"
-            },
-            {
-                "name": "sample-repo-3",
-                "full_name": f"{username}/sample-repo-3",
-                "description": "Third sample repository",
-                "language": "TypeScript",
-                "stars": 75,
-                "forks": 15,
-                "default_branch": "main",
-                "url": f"https://github.com/{username}/sample-repo-3"
-            }
-        ]
-        
+        repos = await github_service.get_user_repositories(username)
         return {
             "username": username,
             "repositories": repos,

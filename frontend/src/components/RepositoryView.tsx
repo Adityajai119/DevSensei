@@ -90,17 +90,15 @@ const RepositoryView: React.FC = () => {
         })
       });
       const data = await response.json();
-      // Convert the structure to FileNode format
-      const convertToFileNodes = (structure: string[]): FileNode[] => {
-        return structure.map(item => {
-          const isDir = item.includes('📁');
-          const name = item.trim().split(' ').pop()?.replace('/', '') || '';
-          return {
-            name,
-            path: name,
-            type: isDir ? 'directory' : 'file'
-          };
-        });
+      // Convert the structure to FileNode format (recursive for nested object)
+      const convertToFileNodes = (structure: any): FileNode[] => {
+        if (!structure || typeof structure !== 'object') return [];
+        return Object.entries(structure).map(([name, value]: [string, any]) => ({
+          name,
+          path: value.path || name,
+          type: value.type,
+          children: value.type === 'directory' ? convertToFileNodes(value.children) : undefined,
+        }));
       };
       setFileTree(convertToFileNodes(data.structure));
     } catch (error) {
@@ -110,14 +108,15 @@ const RepositoryView: React.FC = () => {
 
   const fetchRepositoryDetailsText = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/github/repo/chat-with-repo`, {
+      const response = await fetch(`http://localhost:8000/api/interact-repo/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          repo_name: `${username}/${repoName}`,
-          query: "Explain this repository and list the main technologies used."
+          owner: username,
+          repo_name: repoName,
+          question: "Explain this repository and list the main technologies used."
         })
       });
       const data = await response.json();
@@ -460,21 +459,27 @@ const RepositoryView: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex gap-2">
+              <form className="flex gap-2" onSubmit={handleChatSubmit}>
                 <input
                   type="text"
                   value={chatMessage}
                   onChange={(e) => setChatMessage(e.target.value)}
                   placeholder="Ask about the repository..."
                   className="flex-1 px-4 py-2 bg-white/10 border border-gray-800 rounded-lg focus:outline-none focus:border-white text-white placeholder-gray-400"
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleChatSubmit(e);
+                    }
+                  }}
                 />
                 <button
-                  onClick={handleChatSubmit}
+                  type="submit"
                   className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
                 >
                   Send
                 </button>
-              </div>
+              </form>
             </div>
           </div>
 
